@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %} Trường THPT Trần Hưng Đạo - Ninh Bình</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'utils/semantic.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'utils/base.css' %}">
+	<script type="text/javascript" src="{% static 'utils/semantic.min.css' %}"></script>
+</head>
+<body style="background-image: url('{% static 'img/background.png' %}');">
+	{% load static %}
+	<div class="ui segment">
+		<div class="ui secondary menu cointainer" style="height: 10px; font-family: San Francisco;">
+			<a href="/" class="item" onmouseover="this.style.backgroundColor='inherit';"><img src="{% static 'img/logo.png' %}" style="height: 55px; width: auto;"></a>
+			<a href="/tkb/" class="item">Thời Khóa Biểu</a>
+			<a href="" class="item">Về Chúng Tôi</a>
+			<div class="right menu">
+				{% if user.is_authenticated %}
+				<div class="ui simple dropdown item">
+					Xin chào, {{ user.username }}
+					<div class="menu">
+						{% if user.is_superuser %}
+						<a href="/admin/" class="icon item"><i class="wrench icon"></i>Quản lý</a>
+						{% endif %}
+						<div class="ui divider"></div>
+						<a href="/logout/" class="icon item"><i class="sign-out icon"></i><span style="color: red;">Đăng xuất</span></a>
+					</div>
+				</div>
+				{% else %}
+				<a href="/login/" class="item" style="background-color: #325ca8; color: white;">Đăng Nhập</a>
+				<a href="/register/" class="item" style="background-color: #FFFFFF; color: black;">Đăng Kí</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<br><br>
+	<div class="ui container">
+	{% block content %}
+	{% endblock %}
+	</div>
+	<br><br><br><br><br><br><br>
+</body>
+</html>

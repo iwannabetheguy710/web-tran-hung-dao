@@ -1,0 +1,44 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}
+Chỉnh sửa thời khóa biểu - {{ class_name }} -
+{% endblock %}
+
+{% block content %}
+<div class="ui centered grid">
+	<h1 style="font-family: San Francisco;">Thời Khóa Lớp {{ class_name }}</h1>
+	<form action="/tkb/{{ class_name }}/edit/" method="post" class="ui form">
+		{% csrf_token %}
+		<table class="ui celled padded table" style="font-family: San Francisco; font-size: 18px;">
+			<thead>
+				<tr style="text-align: center;">
+					<th style="width: 150px;"></th>
+					<th>Thứ 2</th>
+					<th>Thứ 3</th>
+					<th>Thứ 4</th>
+					<th>Thứ 5</th>
+					<th>Thứ 6</th>
+					<th>Thứ 7</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for k in table %}
+				<tr style="text-align: center;">
+					<td>{{ k.0 }}</td>
+					<td><input type="text" name="rc-{{ forloop.counter0 }}0" placeholder="{{ k.1 }}" style="font-family: San Francisco; text-align: center;"></td>
+					<td><input type="text" name="rc-{{ forloop.counter0 }}1" placeholder="{{ k.2 }}" style="font-family: San Francisco; text-align: center;"></td>
+					<td><input type="text" name="rc-{{ forloop.counter0 }}2" placeholder="{{ k.3 }}" style="font-family: San Francisco; text-align: center;"></td>
+					<td><input type="text" name="rc-{{ forloop.counter0 }}3" placeholder="{{ k.4 }}" style="font-family: San Francisco; text-align: center;"></td>
+					<td><input type="text" name="rc-{{ forloop.counter0 }}4" placeholder="{{ k.5 }}" style="font-family: San Francisco; text-align: center;"></td>
+					<td><input type="text" name="rc-{{ forloop.counter0 }}5" placeholder="{{ k.6 }}" style="font-family: San Francisco; text-align: center;"></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<button type="submit" class="ui labeled icon blue button">
+			<i class="checkmark icon"></i>
+			Submit
+		</button>
+	</form>
+</div>
+{% endblock %}

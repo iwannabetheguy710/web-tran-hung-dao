@@ -1,0 +1,29 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}
+Thời khóa biểu - 
+{% endblock %}
+
+{% block content %}
+<div class="ui centered grid">
+	<h1 style="font-family: San Francisco;">Thời Khóa Biểu Các Lớp</h1>
+	<table class="ui celled padded table" style="font-family: San Francisco; font-size: 18px;">
+		<thead>
+			<tr style="text-align: center;">
+				<th>Khối 10</th>
+				<th>Khối 11</th>
+				<th>Khối 12</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for ct in class_tag %}
+			<tr style="text-align: center;">
+				<td><a href="/tkb/10{{ ct }}/">10{{ ct }}</a></td>
+				<td><a href="/tkb/11{{ ct }}/">11{{ ct }}</a></td>
+				<td><a href="/tkb/12{{ ct }}/">12{{ ct }}</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}

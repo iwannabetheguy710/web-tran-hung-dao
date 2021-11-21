@@ -1,0 +1,36 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}
+Đăng nhập -
+{% endblock %}
+
+{% block content %}
+<div class="ui centered grid">
+	<div class="ui segment">
+		<div class="ui form error">
+			<form action="/login/" method="post" style="width: 600px; max-width: 600px; font-size: 16px;">
+				<br>
+				{% csrf_token %}
+				<div class="field">
+					<label style="text-align: left;">Tên đăng nhập</label>
+					<input style="font-family: San Francisco;" type="text" name="usr-name" placeholder="Tên đăng nhập" required>
+				</div>
+				<div class="field">
+					<label style="text-align: left;">Mật khẩu</label>
+					<input style="font-family: San Francisco;" type="password" name="usr-pwd" placeholder="Mật khẩu" required>
+				</div>
+				<button type="submit" class="ui right labeled icon blue button" style="font-family: San Francisco; font-size: 16px;">
+					<i class="right sign-in icon"></i>
+					Đăng nhập
+				</button>
+				{% if msg_err %}
+				<div class="ui error message" style="text-align: left; font-family: San Francisco;">
+					<div class="header" style="font-family: San Francisco;">Đăng nhập thất bại !</div>
+					{{ msg_err }}
+				</div>
+				{% endif %}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
